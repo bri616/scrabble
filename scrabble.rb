@@ -1,24 +1,7 @@
 class Scrabble
-LETTERS = {
-  ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"] => 1,
-  ["D", "G"]                                         => 2,
-  ["B", "C", "M", "P"]                               => 3,
-  ["F", "H", "V", "W", "Y"]                          => 4,
-  ["K"]                                              => 5,
-  ["J", "X"]                                         => 8,
-  ["Q", "Z"]                                         => 10
-}
-
-  def self.letter_score(letter)
-    score = nil
-    LETTERS.each do |key, value|
-      score = value if key.include? letter.upcase
-    end
-    score
-  end
 
   def self.score(word)
-    word.chars.collect { |letter| letter_score(letter) }.reduce :+
+    word.score
   end
 
   def self.shortest_word(array_of_words)
@@ -26,14 +9,22 @@ LETTERS = {
   end
 
   def self.max_score(array_of_words)
-    array_of_words.collect { |word| score(word) }.sort.reverse[0]
+    array_of_words.max_by(&:score).score
+  end
+
+  def self.max_score_words(array_of_words)
+    array_of_words.find_all { |word| word.score == max_score(array_of_words) }
+  end
+
+  def self.seven_letters(array_of_words)
+    array_of_words.find { |word| word.length == 7 }
   end
 
   def self.highest_score_from(array_of_words)
-    if array_of_words.find_all { |word| word if score(word) == max_score(array_of_words)}.count > 1
-      shortest_word(array_of_words)
+    if max_score_words(array_of_words).count > 1
+      seven_letters(array_of_words) || shortest_word(array_of_words)
     else
-      array_of_words.max_by { |word| score(word) }
+      array_of_words.max_by(&:score)
     end
   end
 end
