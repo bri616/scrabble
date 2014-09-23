@@ -17,4 +17,9 @@ class Player
   def total_score
     @plays.collect(&:score).reduce :+
   end
+
+  def highest_scoring_word
+    Scrabble::highest_score_from(@plays)
+  end
+
 end

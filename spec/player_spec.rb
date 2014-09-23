@@ -25,10 +25,18 @@ describe Player do
   end
 
   describe "#total_score" do
-    it "does something" do
+    it "returns the player's total score" do
       wordarray = ["aaa", "ccc", "z"]
       wordarray.each { |word| player.play(Word.new(word)) }
       expect(player.total_score).to eq 3+9+10
+    end
+  end
+
+  describe "#highest_scoring_word" do
+    it "returns the player's highest scoring word" do
+      wordarray = ["aaa", "ccc", "z"]
+      wordarray.each { |word| player.play(Word.new(word)) }
+      expect(player.highest_scoring_word.word_string).to eq "z"
     end
   end
 end
