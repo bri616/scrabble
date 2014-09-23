@@ -23,4 +23,12 @@ describe Player do
       expect(player.plays.pop.word_string).to eq word.word_string
     end
   end
+
+  describe "#total_score" do
+    it "does something" do
+      wordarray = ["aaa", "ccc", "z"]
+      wordarray.each { |word| player.play(Word.new(word)) }
+      expect(player.total_score).to eq 3+9+10
+    end
+  end
 end

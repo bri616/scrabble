@@ -9,10 +9,12 @@ class Player
   # def self.new(name)
   #   super(name)
   # end
-  
+
   def play(word)
     @plays << word
   end
 
-
+  def total_score
+    @plays.collect(&:score).reduce :+
+  end
 end

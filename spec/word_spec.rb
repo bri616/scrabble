@@ -8,7 +8,6 @@ describe Word do
     end
   end
 
-
   describe "letter_score" do
     it "returns the score for a letter" do
       expect(Word::letter_score("A")).to eq 1
