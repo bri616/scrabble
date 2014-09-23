@@ -17,7 +17,7 @@ class Scrabble
   end
 
   def self.seven_letters(array_of_words)
-    array_of_words.find { |word| word.length == 7 }
+    array_of_words.find { |word| word.length >= 7 }
   end
 
   def self.highest_score_from(array_of_words)

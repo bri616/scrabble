@@ -11,17 +11,18 @@ class Word
   attr_accessor :score, :length, :word_string
 
   def initialize(word_string)
+    Word::error_handling(word_string)
     @word_string = word_string.downcase
     @score = score
     @length = word_string.length
   end
 
+  def self.error_handling(word_string)
+    raise ArgumentError, "Words can only contain letters." if word_string == "" || word_string[/[^a-zA-Z]+/]
+  end
+
   def self.letter_score(letter)
-    word_score = nil
-    LETTERS.each do |key, value|
-      word_score = value if key.include? letter.upcase
-    end
-    word_score
+    LETTERS.each { |key, value| return value if key.include? letter.upcase }
   end
 
   def score

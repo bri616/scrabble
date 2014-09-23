@@ -22,14 +22,14 @@ describe Scrabble do
         expect(Scrabble::shortest_word(array_of_words).word_string).to eq "fk"
       end
 
-      it "returns the one with the fewest letters" do
-        array_of_words = [Word.new("ccc"), Word.new("fk")]
-        expect(Scrabble::highest_score_from(array_of_words).word_string).to eq "fk"
-      end
-
       it "returns the one with 7 letters (better than fewest)" do
         array_of_words = [Word.new("ccc"), Word.new("aaaaaac")]
         expect(Scrabble::highest_score_from(array_of_words).word_string).to eq "aaaaaac"
+      end
+
+      it "returns the one with the fewest letters" do
+        array_of_words = [Word.new("ccc"), Word.new("fk")]
+        expect(Scrabble::highest_score_from(array_of_words).word_string).to eq "fk"
       end
 
       it "returns the first word in supplied list if there are ties" do
