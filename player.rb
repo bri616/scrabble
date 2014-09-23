@@ -22,4 +22,8 @@ class Player
     Scrabble::highest_score_from(@plays)
   end
 
+  def highest_word_score
+    highest_scoring_word.score
+  end
+
 end
