@@ -15,4 +15,12 @@ describe Player do
       end
     end
   end
+
+  describe "#play" do
+    let(:word) { Word.new("cats") }
+    it "adds a word to the Player's word list" do
+      player.play(word)
+      expect(player.plays.pop.word_string).to eq word.word_string
+    end
+  end
 end
