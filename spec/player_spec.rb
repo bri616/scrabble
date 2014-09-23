@@ -22,6 +22,11 @@ describe Player do
       player.play(word)
       expect(player.plays.pop.word_string).to eq word.word_string
     end
+
+    it "returns false if the player has already won" do
+      player.play(Word.new("zzzzzzzzzzz"))
+      expect(player.play(Word.new("zzzzz"))).to eq false
+    end
   end
 
   describe "#total_score" do
@@ -53,7 +58,7 @@ describe Player do
 
   describe "#won?" do
     wordarray_lost = ["aaa", "ccc", "z"]
-    wordarray_won = ["z","zz","zzz","zzzz","zzzzz","qqqqq"]
+    wordarray_won = ["zzzzz", "qqqqqq"]
 
     it "returns true if the player has more than 100 points" do
       wordarray_won.each { |word| player.play(Word.new(word)) }
@@ -64,8 +69,7 @@ describe Player do
       wordarray_lost.each { |word| player.play(Word.new(word)) }
       expect(player.won?).to eq false
     end
-
-
   end
+
 
 end

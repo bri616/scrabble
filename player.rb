@@ -11,11 +11,15 @@ class Player
   # end
 
   def play(word)
-    @plays << word
+    won? ? false : @plays << word
   end
 
   def total_score
-    @plays.collect(&:score).reduce :+
+    if plays.length > 0
+      @plays.collect(&:score).reduce :+
+    else
+      0
+    end
   end
 
   def highest_scoring_word
@@ -27,7 +31,7 @@ class Player
   end
 
   def won?
-    total_score > 100 ? true : false
+    total_score > 100
   end
 
 end
