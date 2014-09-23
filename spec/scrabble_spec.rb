@@ -23,8 +23,8 @@ describe Scrabble do
       end
 
       it "returns the one with 7 letters (better than fewest)" do
-        array_of_words = [Word.new("ccc"), Word.new("aaaaaac")]
-        expect(Scrabble::highest_score_from(array_of_words).word_string).to eq "aaaaaac"
+        array_of_words = [Word.new("ccc"), Word.new("aaaaaaac")]
+        expect(Scrabble::highest_score_from(array_of_words).word_string).to eq "aaaaaaac"
       end
 
       it "returns the one with the fewest letters" do

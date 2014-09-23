@@ -6,20 +6,12 @@ class Player
     @plays = []
   end
 
-  # def self.new(name)
-  #   super(name)
-  # end
-
   def play(word)
     won? ? false : @plays << word
   end
 
   def total_score
-    if plays.length > 0
-      @plays.collect(&:score).reduce :+
-    else
-      0
-    end
+    @plays.collect(&:score).inject(0) { |sum, i| sum + i }
   end
 
   def highest_scoring_word
