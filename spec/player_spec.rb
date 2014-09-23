@@ -50,4 +50,22 @@ describe Player do
       expect(player.highest_word_score).to eq 10
     end
   end
+
+  describe "#won?" do
+    wordarray_lost = ["aaa", "ccc", "z"]
+    wordarray_won = ["z","zz","zzz","zzzz","zzzzz","qqqqq"]
+
+    it "returns true if the player has more than 100 points" do
+      wordarray_won.each { |word| player.play(Word.new(word)) }
+      expect(player.won?).to eq true
+    end
+
+    it "returns false if the player has less than 100 points" do
+      wordarray_lost.each { |word| player.play(Word.new(word)) }
+      expect(player.won?).to eq false
+    end
+
+
+  end
+
 end

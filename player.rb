@@ -26,4 +26,8 @@ class Player
     highest_scoring_word.score
   end
 
+  def won?
+    total_score > 100 ? true : false
+  end
+
 end
